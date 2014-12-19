@@ -1,6 +1,10 @@
 package com.gemptc.secondbrotherdemo;
 
+import com.baidu.location.LocationClient;
+import com.baidu.location.LocationClientOption;
+import com.baidu.location.LocationClientOption.LocationMode;
 import com.example.fragmentdemo.R;
+import com.gemptc.secondbrotherdemo.MyApplication.MyLocationListener;
 import com.gemptc.secondbrotherdemo.activitymode.AcitivityFragment;
 import com.gemptc.secondbrotherdemo.cinemamode.CinemaFragment;
 import com.gemptc.secondbrotherdemo.moviemode.MovieFragment;
@@ -9,24 +13,30 @@ import com.gemptc.secondbrotherdemo.usermode.NetUtil;
 import com.gemptc.secondbrotherdemo.usermode.UserFragment;
 
 import android.os.Bundle;
+import android.os.Handler;
+import android.view.KeyEvent;
 import android.view.View;
 import android.view.Window;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.FragmentManager;
 import android.app.FragmentTransaction;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.graphics.Bitmap;
 import android.graphics.Color;
 
 /**
- * 项目的主Activity，所有的Fragment都嵌入在这里。
+ * 项目的主Activity，所有的Fragment都嵌入在这里。gggggggggggggggg
  * 
  * @author guolin
  */
 public class MainActivity extends Activity implements OnClickListener {
-
+	public MyLocationListener mMyLocationListener;
+	LocationClient mLocationClient;
 	/**
 	 * 用于展示消息的Fragment
 	 */
@@ -80,6 +90,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	public MyApplication my;
 
 	public int layout = 4;
+
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -98,6 +109,9 @@ public class MainActivity extends Activity implements OnClickListener {
 		// 第一次启动时选中第0个tab
 		
 		setTabSelection(0);
+		mLocationClient=((MyApplication) getApplication()).mLocationClient;//从application读取LocationClient对象启动定位SDK
+		InitLocation();//初始化定位
+		mLocationClient.start();//开始定位
 
 	}
 
@@ -126,7 +140,6 @@ public class MainActivity extends Activity implements OnClickListener {
 	}
 
 	 public void share(View v){
-		 System.out.println("**************");
 			if (layout==2) {
 				Intent intent = new Intent(Intent.ACTION_SEND);
 				intent.setType("text/plain");
@@ -146,8 +159,15 @@ public class MainActivity extends Activity implements OnClickListener {
 				intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK);
 				startActivity(Intent.createChooser(intent, getTitle()));
 			}
+		
 	
 	 }
+	 public void citylist(View v){
+		 Intent intent=new Intent();
+		 intent.setClass(MainActivity.this, CityListActivity.class);
+		 startActivity(intent);
+	 }
+
 
 	@Override
 	public void onClick(View v) {
@@ -292,4 +312,50 @@ public class MainActivity extends Activity implements OnClickListener {
 			transaction.hide(userFragment);
 		}
 	}
+	private void InitLocation() {// 设定位参数
+		LocationClientOption option = new LocationClientOption();
+		/**
+		 * 设置定位参数包括：定位模式（高精度定位模式，低功耗定位模式和仅用设备定位模式），返回坐标类型，是否打开GPS等等。
+		 * 高精度定位模式：这种定位模式下，会同时使用网络定位和GPS定位，优先返回最高精度的定位结果；
+		 * 低功耗定位模式：这种定位模式下，不会使用GPS，只会使用网络定位（Wi-Fi和基站定位）
+		 * 仅用设备定位模式：这种定位模式下，不需要连接网络，只使用GPS进行定位，这种模式下不支持室内环境的定位
+		 * 
+		 */
+		option.setLocationMode(LocationMode.Hight_Accuracy);// 设置定位模式
+		option.setCoorType("gcj02");// 返回的定位结果是百度经纬度，默认值gcj02
+		option.setScanSpan(5000);// 设置发起定位请求的间隔时间为5000ms
+		option.setIsNeedAddress(true);// 返回的定位结果包含地址信息
+		mLocationClient.setLocOption(option);
+
+	}
+	
+	@Override
+	public boolean onKeyDown(int keyCode, KeyEvent event) {
+		switch (keyCode) {
+		case KeyEvent.KEYCODE_BACK:
+			AlertDialog.Builder build = new AlertDialog.Builder(this);
+			build.setTitle("系统提示").setMessage("确定要退出吗？");
+			build.setPositiveButton("确定",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+//							onDestroy();
+//							finish();
+							System.exit(0);
+						}
+					});
+			build.setNegativeButton("取消",
+					new DialogInterface.OnClickListener() {
+
+						@Override
+						public void onClick(DialogInterface dialog, int which) {
+						}
+					}).show();
+			break;
+		}
+		return super.onKeyDown(keyCode, event);
+	}
+	
+
 }

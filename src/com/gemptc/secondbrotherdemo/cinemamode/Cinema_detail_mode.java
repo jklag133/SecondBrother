@@ -1,37 +1,48 @@
 package com.gemptc.secondbrotherdemo.cinemamode;
 
-import java.util.List;
+public class Cinema_detail_mode {
 
-public class Cinema {
 	String reason;
-	public List<Cinema_local> result;
-	String error_code;
+	MovieAndCinema_info result;
+	int error_code;
+
 	public String getReason() {
 		return reason;
 	}
+
 	public void setReason(String reason) {
 		this.reason = reason;
 	}
-	public List<Cinema_local> getResult() {
+
+	public MovieAndCinema_info getResult() {
 		return result;
 	}
-	public void setResult(List<Cinema_local> result) {
+
+	public void setResult(MovieAndCinema_info result) {
 		this.result = result;
 	}
-	public String getError_code() {
+
+	public int getError_code() {
 		return error_code;
 	}
-	public void setError_code(String error_code) {
+
+	public void setError_code(int error_code) {
 		this.error_code = error_code;
 	}
-	public Cinema(String reason, List<Cinema_local> result, String error_code) {
+
+	public Cinema_detail_mode(String reason, MovieAndCinema_info result,
+			int error_code) {
 		super();
 		this.reason = reason;
 		this.result = result;
 		this.error_code = error_code;
 	}
-	public Cinema() {
+
+	public Cinema_detail_mode() {
 		super();
 	}
-	
+
 }
+
+
+

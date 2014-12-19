@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/tv_cinemaname"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginLeft="33dp"
+        android:layout_marginTop="26dp"
+        android:text="cinemaname" />
+
+    <TextView
+        android:id="@+id/tv_cinemaaddress"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/tv_cinemaname"
+        android:layout_below="@+id/tv_cinemaname"
+        android:layout_marginTop="23dp"
+        android:text="address" />
+
+    <ListView
+        android:id="@+id/lv_ticket_price"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/tv_cinemaaddress"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="42dp" >
+    </ListView>
+
+</RelativeLayout>

@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent" >
+
+    <TextView
+        android:id="@+id/cinema_distance"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_marginRight="31dp"
+        android:layout_marginTop="22dp"
+        android:textColor="#ff0000"
+        android:text="cinema_distance" />
+
+    <TextView
+        android:id="@+id/cinema_name"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/cinema_distance"
+        android:layout_alignBottom="@+id/cinema_distance"
+        android:layout_alignParentLeft="true"
+        android:layout_marginLeft="17dp"
+        android:textSize="15dp"
+        android:text="cinema_name" />
+
+    <TextView
+        android:id="@+id/cinema_local"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/cinema_name"
+        android:layout_below="@+id/cinema_name"
+        android:layout_marginTop="17dp"
+        android:text="cinema_local" />
+
+</RelativeLayout>

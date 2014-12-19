@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.fragmentdemo"
+    android:versionCode="1"
+    android:versionName="1.0" >
+
+    <uses-sdk
+        android:minSdkVersion="14"
+        android:targetSdkVersion="17" />
+
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_PHONE_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.MOUNT_UNMOUNT_FILESYSTEMS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.READ_LOGS" >
+    </uses-permission>
+    <uses-permission android:name="android.permission.VIBRATE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+    <uses-permission android:name="android.permission.WRITE_SETTINGS" />
+
+    <application
+        android:name="com.gemptc.secondbrotherdemo.MyApplication"
+        android:allowBackup="true"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:theme="@style/AppTheme" >
+        <service
+            android:name="com.baidu.location.f"
+            android:enabled="true"
+            android:exported="false"
+            android:process=":remote" >
+            <intent-filter>
+                <action android:name="com.baidu.location.service_v2.2" >
+                </action>
+            </intent-filter>
+        </service>
+
+        <meta-data
+            android:name="com.thinkland.juheapi.openid"
+            android:value="JH202697b59cede9f30bc5ffc625afbecc" />
+        <meta-data
+            android:name="com.baidu.lbsapi.API_KEY"
+            android:value="gDXrv0TLzW8BO5Yca16msAIb" />
+        <activity 
+            android:name="com.gemptc.secondbrotherdemo.WelcomeActivity">
+             <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+
+        <activity
+            android:name="com.gemptc.secondbrotherdemo.MainActivity"
+            android:theme="@style/test" >
+        </activity>
+        <activity
+            android:name="com.gemptc.secondbrotherdemo.usermode.LoginActivity"
+            android:theme="@style/test" >
+        </activity>
+        <activity
+            android:name="com.gemptc.secondbrotherdemo.moviemode.MovieDetailActivity"
+            android:theme="@style/test" >
+        </activity>
+        <activity
+            android:name="com.gemptc.secondbrotherdemo.moviemode.SelectSeatActivity"
+            android:theme="@style/test" >
+        </activity>
+        <activity
+            android:name="com.gemptc.secondbrotherdemo.usermode.LoginSuccessActivity"
+            android:theme="@style/test" >
+        </activity>
+        <activity
+            android:name="com.gemptc.secondbrotherdemo.cinemamode.Cinema_detail_Activity"
+            android:theme="@style/test" >
+        </activity>
+        <activity
+            android:name="com.gemptc.secondbrotherdemo.CityListActivity"
+             android:theme="@style/test"/>
+    </application>
+
+</manifest>
