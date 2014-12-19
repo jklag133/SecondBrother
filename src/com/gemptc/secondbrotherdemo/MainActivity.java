@@ -40,6 +40,7 @@ public class MainActivity extends Activity implements OnClickListener {
 	/**
 	 * 用于展示消息的Fragment
 	 */
+	private int a;
 	private MovieFragment movieFragment;
 
 	/**
