@@ -14,6 +14,8 @@ public class CityListActivity extends Activity {
 		setContentView(R.layout.activity_citylist);
 		
 		int i=9;
+		String i="这是主干";
+		String a="ca";
 	}
 
 }
