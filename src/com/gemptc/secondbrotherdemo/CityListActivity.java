@@ -16,6 +16,7 @@ public class CityListActivity extends Activity {
 		int i=9;
 		String i="这是主干";
 		String a="ca";
+		System.out.println(i+a);
 	}
 
 }
