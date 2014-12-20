@@ -13,7 +13,7 @@ public class CityListActivity extends Activity {
 		super.onCreate(savedInstanceState);
 		setContentView(R.layout.activity_citylist);
 		
-		
+		int i=9;
 	}
 
 }
